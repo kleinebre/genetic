@@ -18,9 +18,6 @@ We give each nibble a meaning.
 | e      | Reduce value by .1                                   |
 | f      | Increase value by .1                                 |
 
-
-
-
 However any set of operations could be given to the nibbles.
 
 What matters is that every block of 4 bits has some meaning, even if that meaning is a NoOp;
@@ -50,4 +47,15 @@ Finally, to represent mutations, sometimes a program bit may be randomly flipped
 
 # Next steps
 
-Now imagine an audio wave form - since our current program only generates a single value, obviously it is not a very efficient way to approximate such a wave form. If we had "output current value" and loop instructions, however, we could generate output strings of arbitrary length. Also, if we know we're generating audio, we could include sine generators controllable with amplitude and phase params to help things along.
+Currently we have a single input and always apply the same operations,
+so this isn't very useful.
+It would be more useful to evolve the program to approximate a function.
+To accomplish this, given an input value x (0, 1, 2, 3...) it might generate
+an output value y. The set of operators may be more complex to allow things
+such as sin/cos, setting polynomial parameters, or even implement feedback
+loops / recursion where a value X is calculated based on the value (x-n).
+The fitness may need to be calculated over the entire function.
+Perhaps we want to evolve a circle, where input = angle and output = x, y.
+Perhaps we want to make our instruction set Turing complete.
+
+It's up to you!
