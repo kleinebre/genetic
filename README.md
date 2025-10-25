@@ -4,11 +4,30 @@ This is a little genetic programming experiment. It doesn't do much: it attempts
 
 The DNA is just a random string of bits. This random string of bits is a program used to approximate the number.
 
-Specifically, we start with a value 0. If the nibble is anywhere in the range 0..9, the nibble is added to the value. Subsequent nibbles are given additional meanings:
+Specifically, we start with a value 0.
 
-10 -> Value is divided by 2 11 -> Value is multiplied by 2 12 -> Value is decremented by 1 13 -> Value is incremented by 1 14 -> Value is decremented by .1 15 -> Value is incremented by .1
+We give each nibble a meaning.
 
-However any set of operations could be given to the nibbles. What matters is that every block of 4 bits has some meaning, even if that meaning is a NoOp. Note that in the above, a nibble 0001 has the same meaning as 1101; both will add 1 to the intermediate value. This was strictly accidental.
+| Nibble | Meaning                                              |
+|--------|------------------------------------------------------|
+| 0 - 9  | Add nibble to value                                  |
+| a      | Divide value by 2                                    |
+| b      | Multiply value by 2                                  |
+| c      | Decrement value by 1                                 |
+| d      | Increment value by 1                                 |
+| e      | Reduce value by .1                                   |
+| f      | Increase value by .1                                 |
+
+
+
+
+However any set of operations could be given to the nibbles.
+
+What matters is that every block of 4 bits has some meaning, even if that meaning is a NoOp;
+any binary string is a valid program.
+
+Note that in the above, a nibble 0001 has the same meaning as 1101;
+both will add 1 to the intermediate value. This was strictly accidental.
 
 Good. With the program represented as a random string, we can now run the program and calculate the output value.
 
